@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -28,21 +29,37 @@ namespace VisitorApp.API.Controllers
         {
             var visitors = await _context.Visitors.ToListAsync();
 
+
+
             return Ok(visitors);
         }
         [AllowAnonymous]
         [HttpGet("types")]
         public IActionResult GetVisitTypes()
         {
-            var visitTypes = Enum.GetNames(typeof(VisitType));
 
-            return Ok(visitTypes);
+            var visitVals = new List<object>();
+
+            foreach (var item in Enum.GetValues(typeof(VisitType)))
+            {
+                visitVals.Add(new
+                {
+                    id = (int)item,
+                    name = item.ToString()
+                });
+            }
+
+            return Ok(visitVals);
         }
 
         [AllowAnonymous]
         [HttpPost("add")]
         public async Task<IActionResult> AddVisitor(VisitorStartDto visitorStartDto)
         {
+            var existingVistor = await _repository.FindVisitor(visitorStartDto.FirstName, visitorStartDto.LastName);
+            if (existingVistor != null)
+                return BadRequest("A vistitor with the same name already registered");
+
             var visitorToCreate = new Visitor
             {
                 VisitType = visitorStartDto.VisitType,
@@ -65,7 +82,7 @@ namespace VisitorApp.API.Controllers
             var findVisitor = await _repository.FindVisitor(visitEndDto.FirstName, visitEndDto.LastName);
 
             if (findVisitor == null)
-                return NotFound();
+                return BadRequest("Couldn't find the visitor");
 
 
             return Ok(await _repository.EndVisit(findVisitor));

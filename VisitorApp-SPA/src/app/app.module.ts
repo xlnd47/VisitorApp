@@ -8,13 +8,15 @@ import { FormsModule } from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
       NavComponent,
       HomeComponent,
-      RegisterComponent
+      RegisterComponent,
+      CheckoutComponent
    ],
   imports: [
     BrowserModule,

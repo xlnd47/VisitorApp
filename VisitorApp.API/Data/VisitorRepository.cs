@@ -33,7 +33,7 @@ namespace VisitorApp.API.Data
 
         public async Task<Visitor> FindVisitor(string firstName, string LastName)
         {
-            var visitor = await _context.Visitors.FirstOrDefaultAsync(x => x.FirstName == firstName && x.LastName == LastName && x.VisitEnd == null);
+            var visitor = await _context.Visitors.FirstOrDefaultAsync(x => x.FirstName.ToLower() == firstName.ToLower() && x.LastName.ToLower() == LastName.ToLower() && x.VisitEnd == null);
             if (visitor == null)
                 return null;
 

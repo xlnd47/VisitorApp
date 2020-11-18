@@ -9,5 +9,6 @@ namespace VisitorApp.API.Data
         Task<Visitor> EndVisit(Visitor visitor);
 
         Task<Visitor> FindVisitor(string firstName, string LastName);
+
     }
 }

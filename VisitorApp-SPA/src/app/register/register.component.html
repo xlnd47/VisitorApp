@@ -8,8 +8,8 @@
 
   <div class="form-group">
     <label for="favouriteValue">Kind of visit</label>
-    <select class="form-control" id="favouriteValue">
-      <option *ngFor="let value of valuesFromHome" [value]="value">{{value.name}}</option>
+    <select [(ngModel)]="model.visitType" name="visitType" class="form-control" id="favouriteValue" >
+      <option *ngFor="let value of valuesFromHome"  [value]="value" [ngValue] ="value.id">{{value.name}}</option>
     </select>
   </div>
 
@@ -22,7 +22,7 @@
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" required name="firm" [(ngModel)]="model.firm" placeholder="Firm">
+    <input type="text" class="form-control" required name="firm" [(ngModel)]="model.company" placeholder="Company">
   </div>
 
   <div class="form-group">
