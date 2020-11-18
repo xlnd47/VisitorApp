@@ -2,15 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VisitService {
   baseUrl = 'http://localhost:5000/api/visitors/';
 
   constructor(private http: HttpClient) {}
 
-  register(model: any){
+  register(model: any) {
     return this.http.post(this.baseUrl + 'add', model);
   }
 
+  checkout(model: any) {
+    return this.http.post(this.baseUrl + 'end', model);
+  }
 }

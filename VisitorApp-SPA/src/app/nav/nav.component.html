@@ -1,17 +1,28 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Visitor App</a>
-
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Visitor App</a>
   <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
       <a class="nav-link" href="#">Register visit <span class="sr-only">(current)</span></a>
     </li>
     <li *ngIf="loggedIn()" class="nav-item">
-      <a *ngIf="loggedIn()" class="nav-link" href="#">Dashboard <span class="sr-only"></span></a>
+      <div  class="dropdown" dropdown>
+        <a class="dropdown-toggle nav-link" dropdownToggle>
+          Dashboard 
+        </a>
+        <div class="dropdown-menu" *dropdownMenu>
+          <a class="dropdown-item">Live Visitors</a>
+          <a class="dropdown-item">Checkout Visitor</a>
+        </div>
+      </div>
     </li>
   </ul>
 
 
-  <div *ngIf="loggedIn()" class="dropdown">
+
+
+  <div *ngIf="loggedIn()">
+    <span class="text-light">Hi, {{authService.decodedToken?.unique_name | titlecase}} </span>
     <button class="btn btn-outline-secondary my-2 my-sm-0" (click)="logout()">Logout</button>
   </div>
 
@@ -20,6 +31,6 @@
     <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password" required [(ngModel)]="model.password">
     <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
   </form>
-
+  </div>
 
 </nav>
