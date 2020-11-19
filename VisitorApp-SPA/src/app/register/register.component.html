@@ -8,7 +8,7 @@
 
   <div class="form-group">
     <label for="favouriteValue">Kind of visit</label>
-    <select [(ngModel)]="model.visitType" name="visitType" class="form-control" id="favouriteValue" >
+    <select required [(ngModel)]="model.visitType" name="visitType" class="form-control" id="favouriteValue" >
       <option *ngFor="let value of valuesFromHome"  [value]="value" [ngValue] ="value.id" [selected]="value.id==0">{{value.name}}</option>
     </select>
   </div>
@@ -22,11 +22,11 @@
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" required name="firm" [(ngModel)]="model.company" placeholder="Company">
+    <input type="text" class="form-control" name="firm" [(ngModel)]="model.company" placeholder="Company">
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" required name="numberplate" [(ngModel)]="model.numberplate" placeholder="Number Plate">
+    <input type="text" class="form-control" name="numberplate" [(ngModel)]="model.numberplate" placeholder="Number Plate">
   </div>
 
   <!-- <div class="form-group">
@@ -34,7 +34,7 @@
   </div> -->
 
   <div class="form-group text-center">
-    <button class="btn btn-outline-success" type="submit">Register</button>
+    <button class="btn btn-outline-success" [disabled]="!registerForm.valid" type="submit">Register</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div>
   

@@ -1,4 +1,4 @@
-<form #registerForm="ngForm" (ngSubmit)="checkout()">
+<form #checkoutForm="ngForm" (ngSubmit)="checkout()">
   <h2 class="text-center text-primary">Checkout visit</h2>
   <hr>
 
@@ -12,7 +12,7 @@
 
 
   <div class="form-group text-center">
-    <button class="btn btn-outline-success" type="submit">Checkout</button>
+    <button class="btn btn-outline-success" [disabled]="!checkoutForm.valid" type="submit">Checkout</button>
     <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
   </div>
   
