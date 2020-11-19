@@ -36,7 +36,7 @@ namespace VisitorApp.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddCors();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IVisitorRepository, VisitorRepository>();

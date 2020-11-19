@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AllVisitorsListComponent } from './all-visitors-list/all-visitors-list.component';
+import { GraphsComponent } from './graphs/graphs.component';
 import { HomeComponent } from './home/home.component';
 import { LiveVisitorsListComponent } from './live-visitors-list/live-visitors-list.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -12,7 +12,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'live-visitors', component: LiveVisitorsListComponent },
-      { path: 'all-visitors', component: AllVisitorsListComponent },
+      { path: 'graphs', component: GraphsComponent },
     ],
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },

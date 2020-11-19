@@ -1,0 +1,43 @@
+<div class="container">
+  <br>
+  <div class="row" *ngIf="chartLoaded">
+    <div class="col-sm">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Visitors in building</div>
+        <div class="card-body">
+          <h4 class="card-title">{{liveVisitors.length}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Total vistors today</div>
+        <div class="card-body">
+          <h4 class="card-title">{{countTodaysVisitors()}}</h4>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Total visitors ever</div>
+        <div class="card-body">
+          <h4 class="card-title">{{visitors.length}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <ngx-charts-bar-vertical *ngIf="chartLoaded" 
+    [view]="[1000,400]"
+    [results]="visitData"
+    [xAxisLabel]="'Hours'"
+    [legendTitle]="'Visit time per vistor'"
+    [yAxisLabel]="'Visitors'"
+    [legend]="true"
+    [showXAxisLabel]="true"
+    [showYAxisLabel]="true"
+    [xAxis]="true"
+    [yAxis]="true"
+    [gradient]="true">
+</ngx-charts-bar-vertical>
+</div>

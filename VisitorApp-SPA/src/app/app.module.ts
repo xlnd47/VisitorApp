@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -14,8 +15,8 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LiveVisitorsListComponent } from './live-visitors-list/live-visitors-list.component';
-import { AllVisitorsListComponent } from './all-visitors-list/all-visitors-list.component';
 import { appRoutes } from './routes';
+import { GraphsComponent } from './graphs/graphs.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { appRoutes } from './routes';
     RegisterComponent,
     CheckoutComponent,
     LiveVisitorsListComponent,
-    AllVisitorsListComponent,
+    GraphsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +35,7 @@ import { appRoutes } from './routes';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    NgxChartsModule,
   ],
   providers: [AuthService, ErrorInterceptorProvider],
   bootstrap: [AppComponent],

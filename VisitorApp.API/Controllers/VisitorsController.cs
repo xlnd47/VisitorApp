@@ -16,23 +16,30 @@ namespace VisitorApp.API.Controllers
     [Route("api/[controller]")]
     public class VisitorsController : ControllerBase
     {
-        private readonly DataContext _context;
         private readonly IVisitorRepository _repository;
-        public VisitorsController(IVisitorRepository repository, DataContext context)
+        public VisitorsController(IVisitorRepository repository)
         {
             _repository = repository;
-            _context = context;
+
         }
 
         [HttpGet]
         public async Task<IActionResult> GetVisitors()
         {
-            var visitors = await _context.Visitors.ToListAsync();
-
-
+            var visitors = await _repository.GetVisitors();
 
             return Ok(visitors);
         }
+
+        [HttpGet("live")]
+        public async Task<IActionResult> GetLiveVisitors()
+        {
+
+            var visitors = await _repository.LiveVisitors();
+            return Ok(visitors);
+        }
+
+
         [AllowAnonymous]
         [HttpGet("types")]
         public IActionResult GetVisitTypes()
@@ -87,5 +94,20 @@ namespace VisitorApp.API.Controllers
 
             return Ok(await _repository.EndVisit(findVisitor));
         }
+
+        [HttpPost("end/{id}")]
+        public async Task<IActionResult> EndVisitById(int id)
+        {
+            var findVisitor = await _repository.FindVisitorById(id);
+
+            if (findVisitor == null)
+                return BadRequest("Couldn't find the visitor");
+
+
+            return Ok(await _repository.EndVisit(findVisitor));
+        }
+
+
+
     }
 }

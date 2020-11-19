@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using VisitorApp.API.Models;
@@ -40,5 +42,33 @@ namespace VisitorApp.API.Data
             return visitor;
 
         }
+
+        public async Task<Visitor> FindVisitorById(int id)
+        {
+            var visitor = await _context.Visitors.FirstOrDefaultAsync(x => x.Id == id);
+            return visitor;
+
+        }
+
+
+
+        public async Task<List<Visitor>> LiveVisitors()
+        {
+
+            var visitors = await _context.Visitors.ToListAsync();
+
+            var visitorsList = visitors.Where(x => x.VisitEnd == null);
+
+            return visitorsList.ToList();
+        }
+
+        public async Task<List<Visitor>> GetVisitors()
+        {
+            var visitors = await _context.Visitors.ToListAsync();
+
+            return visitors;
+        }
+
+
     }
 }

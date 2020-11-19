@@ -26,7 +26,7 @@
   </div>
 
   <div class="form-group">
-    <input type="text" class="form-control" name="numberplate" [(ngModel)]="model.numberplate" placeholder="Number Plate">
+    <input type="text" class="form-control" name="numberplate" [(ngModel)]="model.numberplate" placeholder="Number Plate"  onkeyup="this.value = this.value.toUpperCase();" >
   </div>
 
   <!-- <div class="form-group">

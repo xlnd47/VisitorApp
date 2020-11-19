@@ -27,6 +27,7 @@ export class CheckoutComponent implements OnInit {
     this.visitService.checkout(this.model).subscribe(
       () => {
         this.alertify.success('checked visitor out');
+        this.cancelRegister.emit(false);
       },
       (error) => {
         this.alertify.error(error);
