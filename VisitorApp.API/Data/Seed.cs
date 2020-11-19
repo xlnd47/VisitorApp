@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
@@ -24,6 +25,25 @@ namespace VisitorApp.API.Data
                     user.Username = user.Username.ToLower();
                     context.Users.Add(user);
 
+                }
+
+                context.SaveChanges();
+            }
+        }
+
+        public static void SeedVisitors(DataContext context)
+        {
+            Random rnd = new Random();
+            if (!context.Visitors.Any())
+            {
+                var visitorsData = System.IO.File.ReadAllText("Data/SeedData/VistorSeedData.json");
+                var visitors = JsonConvert.DeserializeObject<List<Visitor>>(visitorsData);
+
+                foreach (var visitor in visitors)
+                {
+                    if (rnd.Next(0, 100) > 3)
+                        visitor.VisitEnd = visitor.VisitBegin.AddMinutes(rnd.Next(10, 200));
+                    context.Visitors.Add(visitor);
                 }
 
                 context.SaveChanges();

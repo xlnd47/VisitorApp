@@ -55,11 +55,11 @@ namespace VisitorApp.API.Data
         public async Task<List<Visitor>> LiveVisitors()
         {
 
-            var visitors = await _context.Visitors.ToListAsync();
+            var visitorsList = await _context.Visitors.ToListAsync();
 
-            var visitorsList = visitors.Where(x => x.VisitEnd == null);
+            var visitors = visitorsList.Where(x => x.VisitEnd == null);
 
-            return visitorsList.ToList();
+            return visitors.ToList();
         }
 
         public async Task<List<Visitor>> GetVisitors()
@@ -69,6 +69,14 @@ namespace VisitorApp.API.Data
             return visitors;
         }
 
+        public async Task<List<Visitor>> GetVisitorsToday()
+        {
+            var visitorsList = await _context.Visitors.ToListAsync();
 
+            var visitors = visitorsList.Where(x => x.VisitBegin.Date == DateTime.Today.Date).ToList();
+
+            return visitors;
+
+        }
     }
 }

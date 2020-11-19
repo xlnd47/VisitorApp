@@ -39,6 +39,13 @@ namespace VisitorApp.API.Controllers
             return Ok(visitors);
         }
 
+        [HttpGet("today")]
+        public async Task<IActionResult> GetVisitorsToday()
+        {
+            var visitors = await _repository.GetVisitorsToday();
+            return Ok(visitors);
+        }
+
 
         [AllowAnonymous]
         [HttpGet("types")]

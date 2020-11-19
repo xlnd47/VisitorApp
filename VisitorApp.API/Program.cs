@@ -21,6 +21,7 @@ namespace VisitorApp.API
                     var context = services.GetRequiredService<DataContext>();
                     context.Database.Migrate();
                     Seed.SeedUsers(context);
+                    Seed.SeedVisitors(context);
                 }
                 catch (Exception ex)
                 {

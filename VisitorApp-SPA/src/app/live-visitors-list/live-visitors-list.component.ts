@@ -13,6 +13,7 @@ import { VisitService } from '../_services/visit.service';
 export class LiveVisitorsListComponent implements OnInit {
   visitors!: Visitor[];
   types!: VisitType[];
+  typesLoaded = false;
 
   constructor(
     private visitService: VisitService,
@@ -26,7 +27,7 @@ export class LiveVisitorsListComponent implements OnInit {
   }
 
   getVisitType(index: number) {
-    return this.types[index].name;
+    return this.types[index] ? this.types[index].name : null;
   }
 
   checkoutVisitor(id: number) {
@@ -49,6 +50,7 @@ export class LiveVisitorsListComponent implements OnInit {
     this.visitService.getTypes().subscribe(
       (visitTypes: VisitType[]) => {
         this.types = visitTypes;
+        this.typesLoaded = true;
       },
       (error) => {
         this.alertify.error(error);

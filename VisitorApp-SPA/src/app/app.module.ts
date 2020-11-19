@@ -17,9 +17,10 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { LiveVisitorsListComponent } from './live-visitors-list/live-visitors-list.component';
 import { appRoutes } from './routes';
 import { GraphsComponent } from './graphs/graphs.component';
+import { AllVisitorsComponent } from './all-visitors/all-visitors.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -27,7 +28,8 @@ import { GraphsComponent } from './graphs/graphs.component';
     CheckoutComponent,
     LiveVisitorsListComponent,
     GraphsComponent,
-  ],
+      AllVisitorsComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,

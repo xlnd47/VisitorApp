@@ -11,7 +11,7 @@ import { VisitService } from '../_services/visit.service';
 export class GraphsComponent implements OnInit {
   visitors: Visitor[] = [];
   liveVisitors: Visitor[] = [];
-  todaysVisitors = 0;
+  todayVisitors: Visitor[] = [];
   visitData = [
     { name: '0-1', value: 0 },
     { name: '1-2', value: 0 },
@@ -28,6 +28,7 @@ export class GraphsComponent implements OnInit {
   ngOnInit() {
     this.loadVisitors();
     this.loadLiveVisitors();
+    this.loadTodayVisitors();
   }
 
   loadVisitors() {
@@ -53,19 +54,15 @@ export class GraphsComponent implements OnInit {
     );
   }
 
-  countTodaysVisitors() {
-    let i = 0;
-    const today = new Date();
-    this.visitors.forEach((visitor) => {
-      if (
-        new Date(visitor.visitBegin).getFullYear === today.getFullYear &&
-        new Date(visitor.visitBegin).getMonth === today.getMonth &&
-        new Date(visitor.visitBegin).getDate === today.getDate
-      ) {
-        i = i + 1;
+  loadTodayVisitors() {
+    this.visitService.getVisitorsToday().subscribe(
+      (visitors: Visitor[]) => {
+        this.todayVisitors = visitors;
+      },
+      (error) => {
+        this.alertify.error(error);
       }
-    });
-    return i;
+    );
   }
 
   countVisitTimes() {

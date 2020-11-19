@@ -14,6 +14,8 @@ namespace VisitorApp.API.Data
 
 
         Task<List<Visitor>> LiveVisitors();
+
+        Task<List<Visitor>> GetVisitorsToday();
         Task<List<Visitor>> GetVisitors();
 
 

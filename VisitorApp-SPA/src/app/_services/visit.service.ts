@@ -46,4 +46,8 @@ export class VisitService {
   getVisitors(): Observable<Visitor[]> {
     return this.http.get<Visitor[]>(this.baseUrl, httpOptions);
   }
+
+  getVisitorsToday(): Observable<Visitor[]> {
+    return this.http.get<Visitor[]>(this.baseUrl + 'today', httpOptions);
+  }
 }

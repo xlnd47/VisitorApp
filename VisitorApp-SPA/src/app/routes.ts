@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AllVisitorsComponent } from './all-visitors/all-visitors.component';
 import { GraphsComponent } from './graphs/graphs.component';
 import { HomeComponent } from './home/home.component';
 import { LiveVisitorsListComponent } from './live-visitors-list/live-visitors-list.component';
@@ -13,6 +14,7 @@ export const appRoutes: Routes = [
     children: [
       { path: 'live-visitors', component: LiveVisitorsListComponent },
       { path: 'graphs', component: GraphsComponent },
+      { path: 'all-visitors', component: AllVisitorsComponent },
     ],
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
