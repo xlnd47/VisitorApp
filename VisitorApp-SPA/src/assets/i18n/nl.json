@@ -1,0 +1,15 @@
+{
+  "Sitetitle": "Bezoekers App",
+  "Registertitle": "Registeer uw bezoek",
+  "Checkouttitle": "Bezoek uitchecken",
+  "RegisterPageTitle": "Registreer bezoek",
+  "CheckoutPageTitle": "Bezoek uitchecken",
+  "KindOfVisitLabel": "Type van bezoek",
+  "FirstName": "Voornaam",
+  "LastName": "Achternaam",
+  "Company": "Bedrijf",
+  "NumberPlate": "Nummer Plaat",
+  "Register": "Registreer",
+  "Checkout": "Uitchecken",
+  "Cancel": "Annuleer"
+}

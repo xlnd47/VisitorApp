@@ -1,0 +1,15 @@
+{
+  "Sitetitle": "Visitor App",
+  "Registertitle": "Register your visit",
+  "Checkouttitle": "Visit Check Out",
+  "RegisterPageTitle": "Register visit",
+  "CheckoutPageTitle": "Check Out visit",
+  "KindOfVisitLabel": "Kind of visit",
+  "FirstName": "First Name",
+  "LastName": "Last Name",
+  "Company": "Company",
+  "NumberPlate": "NumberPlate",
+  "Register": "Register",
+  "Checkout": "Check Out",
+  "Cancel": "Cancel"
+}
